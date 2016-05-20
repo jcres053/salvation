@@ -4,7 +4,7 @@ A browser-based, First-Person Shooter game which uses the IcreamYou gaming frame
 
 Key Changes and Additions
 
- - Added new textures and skybox, changed FOV, increased walking speed for both player and AI, bullet speed and damage for both player and AI, increased health and added a lives count and bonus lives based on conditional requirement.
+ -Added new textures and skybox, changed FOV, increased walking speed for both player and AI, bullet speed and damage for both player and AI, increased health and added a lives count and bonus lives based on conditional requirement.
  
 -Changed Health Cube to Sphere and altered the values making it easier to pick up along with increassing the health bonus.
  
