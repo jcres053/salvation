@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8>
+  <title>Salvation Juan A. Crespo</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+   <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="apple-mobile-web-app-title" content="Salvation">
+<meta name="application-name" content="Salvation">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+  <style>
+    body {
+      background-image: url('images/rsz_scifi.jpg');
+      cursor: url('images/gun.png'), auto;
+      font-family: Georgia, Helvetica, sans-serif;
+      font-weight: bold;
+      margin: 0;
+      overflow: hidden;
+      padding: 0;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+     
+    #hud {
+      bottom: 10px;
+      position: absolute;
+      right: 10px;
+      z-index: 100;
+    }
+
+    #stop {
+      bottom: 100px;
+      position: absolute;
+      right: 10px;
+      z-index: 100;
+    }
+
+    #radar_button {
+      color: #000000;
+      text-transform: uppercase;
+      font-weight: bold;
+      bottom: 210px;
+      left: 65px;
+      position: absolute;
+      z-index: 100;
+    }
+
+    #thrust {
+      
+      border-radius: 50px;
+      border: 7px outset #A1BD95;
+      background-color: #ffffff; 
+      bottom: 210px;
+      left: 155px;
+      position: absolute;
+      z-index: 100;
+    }
+
+    #credits {
+      font-size: 12px;
+      position: absolute;
+      text-align: center;
+      top: 0px;
+      margin: auto;
+      width: 100%;
+      z-index: 100;
+    }
+     
+    p {
+      background-color: #222729;
+      color: #ffffff;
+      font-size: 16px;
+      border: 1px solid black;
+      display: inline-block;
+      margin: 0;
+      padding: 5px;
+    }
+
+    #hstext {
+      background-color: #0D00FF;
+      color: #ffffff;
+      font-size: 16px;
+      border: 1px solid black;
+      display: inline-block;
+      margin: 0;
+      padding: 5px;
+    }
+
+    #current_highscore {
+      color: #ffffff;
+      font-size: 18px;
+      left: 587px;
+      background-color: #222729;
+      border: 4px inset #A1BD95;
+      padding-left: 5px;
+      padding-right: 5px;
+      top: 50px;
+      margin: auto;
+      text-align: center;
+      position: absolute;
+      z-index: 100;
+    }
+
+    #radar {
+      border-radius: 50px;
+      opacity: 0.6;
+      background-color: #EEEEEE;
+      border: 7px outset #A1BD95;
+      bottom: 10px;
+      left: 10px;
+      position: absolute;
+      z-index: 100;
+    }
+
+    #intro {
+      padding-top: 15px;
+      background-color: #000000;
+      background-image: url('images/rsz_1flaming_skull.png');
+      background-repeat: no-repeat;
+      color: #FFFFFF;
+      cursor: url('images/gun.png'), auto;
+      font-size: 32px;
+      opacity: 0.7;
+      margin-top: 450px;
+      text-align: center;
+      z-index: 1001;
+    }
+
+    #death {
+      background-color: #000000;
+      margin: auto;
+      display: none;
+      left: 0;
+      opacity: 0.2;
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      z-index: 1002;
+    }
+
+    #hurt {
+      background-image: url('images/bloodsplatter.png');
+      margin: auto;
+      display: none;
+      left: 0;
+      opacity: 0.5;
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      z-index: 1002;
+    }
+
+    #dir {
+      opacity: 0.7;
+      bottom: 50px;
+      left: 285px;
+      margin: auto;
+      width: auto;
+      position: absolute;
+      z-index: 100;
+    }
+     
+  </style>
+
+
+  <script src="js/three.min.js"></script>
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.2.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="js/jquery-1.7.2.min.js"></script>
+  <script src="js/favicon.js"></script>
+  <script src="js/explosion.js"></script> 
+  <script src="js/webAudiox.js"></script>
+  <script src="js/jquery.keybind.js"></script>
+  <script src="js/salvation.js"></script>
+
+  
+  <script>
+    // create WebAudio API context
+    var context = new AudioContext();
+
+    // Create lineOut
+    var lineOut = new WebAudiox.LineOut(context);
+
+    // load a sound and play it immediatly
+    WebAudiox.loadBuffer(context, 'audio/evil_laugh.mp3', function(buffer){
+        // init AudioBufferSourceNode
+        var source = context.createBufferSource();
+        source.buffer = buffer;
+        source.loop - true;
+        source.connect(lineOut.destination);
+
+        // start the sound now
+        source.start(0);
+    });
+</script>
+ 
+    <script type="text/javascript">
+      (function($) {
+        $(function() {
+          var add = function(key) {
+            $('#list').append($('<li />').append(key));
+            $(window).bind('keydown', key, function() {
+              $('#placeholder').append($('<p />').append(key));
+              return false;
+            });
+          };
+          add('a b c');
+          add('3 9');
+          add('g g');
+          add('j');
+          add('k');
+          add('C-x C-c');
+          add('F5');
+        });
+      })(jQuery);
+    </script>
+
+</head>
+<body>
+<bgsound src="audio/gothicmarch.mp3" loop="-1">
+<embed src="audio/gothicmarch.mp3" autostart="true" loop="infinite"
+width="2" height="0">
+</embed>
+
+<script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-32906556-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script> 
+
+          
+
+</body>
+</html>
+
