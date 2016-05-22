@@ -1,4 +1,4 @@
-# salvation
+# Salvation(Beta) 
 
 A browser-based, First-Person Shooter game which uses the IcreamYou gaming framework (https://github.com/IceCreamYou/Nemesis) along with the latest Three.js library and WebGL rendering components. Use the 'WASD' keys to move, mouse to look around, left mouse click button to shoot. Hit F11 to go full screen, 'p' key to pause(click cancel to unpause). Mouse recommended.
 
